@@ -1,22 +1,11 @@
 Rails.application.routes.draw do
-  resources :searches
-  resources :categories
-  devise_for :users,  :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  scope '/admin' do 
-      resources :users, only: [:index, :show, :edit, :update]
-  end
-
-  resources :items do  
-    resources :comments
-  end
-  get 'welcome/index'
-
-
+  resources :articles
+  root "articles#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
